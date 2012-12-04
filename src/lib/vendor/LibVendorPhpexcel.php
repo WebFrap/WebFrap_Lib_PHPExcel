@@ -67,7 +67,7 @@ class LibVendorPhpexcel
   public static function loadReader2007()
   {
     // include the needed data
-    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/Excel2007.php';
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/Excel2007.php';
 
   }//end public static function loadReader2007 */
 
@@ -77,7 +77,7 @@ class LibVendorPhpexcel
   public static function loadReader2003()
   {
     // include the needed data
-    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/Excel2003XML.php';
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/Excel2003XML.php';
 
   }//end public static function loadReader2003 */
 
@@ -87,7 +87,7 @@ class LibVendorPhpexcel
   public static function loadReader5()
   {
     // include the needed data
-    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/Excel5.php';
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/Excel5.php';
 
   }//end public static function loadReader5 */
 
@@ -97,7 +97,7 @@ class LibVendorPhpexcel
   public static function loadReaderOOCalc()
   {
     // include the needed data
-    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/OOCalc.php';
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/OOCalc.php';
   }//end public static function loadReaderOOCalc */
 
 /*//////////////////////////////////////////////////////////////////////////////
@@ -110,7 +110,7 @@ class LibVendorPhpexcel
   public static function loadWriter2007()
   {
     // include the needed data
-    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Writer/Excel2007.php';
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Writer/Excel2007.php';
   }//end public static function loadWriter2007 */
   
 /*//////////////////////////////////////////////////////////////////////////////
