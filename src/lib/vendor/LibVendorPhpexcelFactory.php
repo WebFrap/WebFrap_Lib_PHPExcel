@@ -18,19 +18,23 @@
 // special code block
 
 if( !defined( 'VENDOR_PHPEXCEL_VERSION' ) )
+{
+
   define( 'VENDOR_PHPEXCEL_VERSION' , 'actual' );
 
-// include the needed data
-include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel.php';
+  // include the needed data
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel.php';
+  
+  /** PHPExcel_Cell_AdvancedValueBinder */
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Cell/AdvancedValueBinder.php';
+  
+  /** PHPExcel_IOFactory */
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/IOFactory.php';
+  
+  /** Read Filters */
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/IReadFilter.php';
 
-/** PHPExcel_Cell_AdvancedValueBinder */
-include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Cell/AdvancedValueBinder.php';
-
-/** PHPExcel_IOFactory */
-include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/IOFactory.php';
-
-/** Read Filters */
-include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/IReadFilter.php';
+}
 
 
 // Set value binder

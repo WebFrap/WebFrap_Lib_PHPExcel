@@ -16,57 +16,140 @@
 *******************************************************************************/
 
 
+if( !defined( 'VENDOR_PHPEXCEL_VERSION' ) )
+{
+
+  define( 'VENDOR_PHPEXCEL_VERSION' , 'actual' );
+
+  // include the needed data
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel.php';
+  
+  /** PHPExcel_Cell_AdvancedValueBinder */
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Cell/AdvancedValueBinder.php';
+  
+  /** PHPExcel_IOFactory */
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/IOFactory.php';
+  
+  /** Read Filters */
+  include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel/Reader/IReadFilter.php';
+
+}
+
+// Set value binder
+PHPExcel_Cell::setValueBinder( new PHPExcel_Cell_AdvancedValueBinder() );
+
 /**
  * @package Webfrap
  * @subpackage ModBase
  * @author Dominik Bonsch <dominik.bonsch@webfrap.de>
  * @copyright Webfrap Developer Network <contact@webfrap.de>
+ * @licence GPLv3
  */
 class LibVendorPhpexcel
-  extends PHPExcel
 {
 
-	/**
-	 * Create a new PHPExcel with one Worksheet
-	 * @param string $title
-	 * @param string $sheetClass
-	 */
-	public function __construct( $title = null, $sheetClass = null )
-	{
-		// Initialise worksheet collection and add one worksheet
-		$this->_workSheetCollection = array();
-		
-		if( $sheetClass )
-		{  
-		  $this->_workSheetCollection[0] = new $sheetClass( $this, $title );
-		}
-		else
-		{ 
-		  $this->_workSheetCollection[0] = new PHPExcel_Worksheet( $this, $title );
-		}
-		  
-		$this->_activeSheetIndex = 0;
-
-		// Create document properties
-		$this->_properties = new PHPExcel_DocumentProperties();
-
-		// Create document security
-		$this->_security = new PHPExcel_DocumentSecurity();
-
-		// Set named ranges
-		$this->_namedRanges = array();
-
-		// Create the cellXf supervisor
-		$this->_cellXfSupervisor = new PHPExcel_Style(true);
-		$this->_cellXfSupervisor->bindParent($this);
-
-		// Create the default style
-		$this->addCellXf(new PHPExcel_Style);
-		$this->addCellStyleXf(new PHPExcel_Style);
-		
-		
-	}//end public function __construct */
+  /**
+   * simple method just to call the autoload
+   *
+   */
+  public static function init()
+  {
+  }//end public static function init */
   
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Readers
+//////////////////////////////////////////////////////////////////////////////*/
+
+  /**
+   * 
+   */
+  public static function loadReader2007()
+  {
+    // include the needed data
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/Excel2007.php';
+
+  }//end public static function loadReader2007 */
+
+  /**
+   * 
+   */
+  public static function loadReader2003()
+  {
+    // include the needed data
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/Excel2003XML.php';
+
+  }//end public static function loadReader2003 */
+
+  /**
+   * 
+   */
+  public static function loadReader5()
+  {
+    // include the needed data
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/Excel5.php';
+
+  }//end public static function loadReader5 */
+
+  /**
+   * 
+   */
+  public static function loadReaderOOCalc()
+  {
+    // include the needed data
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Reader/OOCalc.php';
+  }//end public static function loadReaderOOCalc */
+
+/*//////////////////////////////////////////////////////////////////////////////
+// Writers
+//////////////////////////////////////////////////////////////////////////////*/
+  
+  /**
+   * 
+   */
+  public static function loadWriter2007()
+  {
+    // include the needed data
+    include PATH_ROOT.'WebFrap_Lib_Phpexcel/vendor/phpexcel/1.7.2/Classes/PHPExcel/Writer/Excel2007.php';
+  }//end public static function loadWriter2007 */
+  
+/*//////////////////////////////////////////////////////////////////////////////
+// Some Loaders
+//////////////////////////////////////////////////////////////////////////////*/
+  
+  /**
+   * 
+   * @param PHPExcel $phpExcel
+   */
+  public static function getExcelWriter2007( $phpExcel )
+  {
+    
+    if( !class_exists('PHPExcel_Writer_Excel2007') )
+      self::loadWriter2007();
+      
+    return PHPExcel_IOFactory::createWriter($phpExcel, "Excel2007");
+    
+  }//end public static function getExcelWriter2007 */
+  
+  /**
+   * 
+   */
+  public static function newSheet()
+  {
+    return new PHPExcel();
+  }//end public static function newSheet  */
+  
+  
+  
+  public static function loadSheet($path)
+  {
+  	
+  	$objReader = new PHPExcel_Reader_Excel2007();
+	  $objPHPExcel = $objReader->load($path);
+  	
+    return $objPHPExcel;
+  }//end public static function newSheet  */
+
 
 }//end class LibVendorPhpexcel
 
