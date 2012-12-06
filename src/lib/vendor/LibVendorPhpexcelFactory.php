@@ -81,7 +81,7 @@ class LibVendorPhpexcelFactory
   public static function newDocument( $title = null, $sheetClass = null )
   {
     
-    return new PHPExcel( $title, $sheetClass );
+    return new LibVendorPhpexcelDocument( $title, $sheetClass );
     
   }//end public static function newDocument  */
 
@@ -173,7 +173,7 @@ class LibVendorPhpexcelFactory
   public function newSheet( $title = null, $sheetClass = null )
   {
     
-    return new LibVendorPhpexcel( $title, $sheetClass );
+    return new LibVendorPhpexcelDocument( $title, $sheetClass );
     
   }//end public function newSheet  */
 

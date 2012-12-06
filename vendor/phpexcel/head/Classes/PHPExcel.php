@@ -422,7 +422,7 @@ class PHPExcel
 		if ($pIndex > count($this->_workSheetCollection) - 1) {
 			throw new Exception("Active sheet index is out of bounds.");
 		} else {
-			$this->_activeSheetIndex = $pIndex;
+			$this->_activeSheetIndex = (int)$pIndex;
 		}
 		return $this->getActiveSheet();
 	}
