@@ -20,7 +20,7 @@
 if( !defined( 'VENDOR_PHPEXCEL_VERSION' ) )
 {
 
-  define( 'VENDOR_PHPEXCEL_VERSION' , 'stable' );
+  define( 'VENDOR_PHPEXCEL_VERSION' , 'head' );
 
   // include the needed data
   include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel.php';
@@ -81,7 +81,20 @@ class LibVendorPhpexcelFactory
   public static function newDocument( $title = null, $sheetClass = null )
   {
     
-    return new LibVendorPhpexcelDocument( $title, $sheetClass );
+    $document = new LibVendorPhpexcelDocument( $title, $sheetClass );
+    
+    /*
+  	if( $sheetClass && Webfrap::classLoadable( $sheetClass ) )
+		{  
+		  $document->createSheet( 0, $sheetClass, $title );
+		}
+		else
+		{ 
+		  $document->createSheet( 0 );
+		}
+		*/
+    
+		return $document;
     
   }//end public static function newDocument  */
 
@@ -173,8 +186,21 @@ class LibVendorPhpexcelFactory
   public function newSheet( $title = null, $sheetClass = null )
   {
     
-    return new LibVendorPhpexcelDocument( $title, $sheetClass );
+    $document = new LibVendorPhpexcelDocument( $title, $sheetClass );
     
+    /*
+  	if( $sheetClass && Webfrap::classLoadable( $sheetClass ) )
+		{  
+		  $document->createSheet( 0, $sheetClass, $title );
+		}
+		else
+		{ 
+		  $document->createSheet( 0 );
+		}
+		*/
+    
+		return $document;
+		
   }//end public function newSheet  */
 
 

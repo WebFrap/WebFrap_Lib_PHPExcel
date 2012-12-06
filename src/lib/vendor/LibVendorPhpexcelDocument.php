@@ -30,27 +30,16 @@ class LibVendorPhpexcelDocument
 	 * Create a new PHPExcel with one Worksheet
 	 * @param string $title
 	 * @param string $sheetClass
-	 */
-	public function __construct( $title = null, $sheetClass = null )
+	 * /
+	public function __construct(  )
 	{
 	  
-	  parent::__construct();
+	  //parent::__construct();
 	  
 		// Initialise worksheet collection and add one worksheet
 		$this->_workSheetCollection = array();
-		
-		if( $sheetClass && Webfrap::classLoadable( $sheetClass ) )
-		{  
-		  $this->_workSheetCollection[0] = new $sheetClass( $this, $title );
-		}
-		else
-		{ 
-		  $this->_workSheetCollection[0] = new PHPExcel_Worksheet( $this, $title );
-		}
-		  
 		$this->_activeSheetIndex = 0;
-    
-		/*
+
 		// Create document properties
 		$this->_properties = new PHPExcel_DocumentProperties();
 
@@ -67,7 +56,7 @@ class LibVendorPhpexcelDocument
 		// Create the default style
 		$this->addCellXf(new PHPExcel_Style);
 		$this->addCellStyleXf(new PHPExcel_Style);
-		*/
+
 		
 	}//end public function __construct */
 	
@@ -77,8 +66,8 @@ class LibVendorPhpexcelDocument
 	 * @param int|null $iSheetIndex Index where sheet should go (0,1,..., or null for last)
      * @return PHPExcel_Worksheet
      * @throws Exception
-     */
-    public function createSheet($iSheetIndex = NULL, $className = null, $title = null )
+      */
+    public function createSheet( $iSheetIndex = 0, $className = null, $title = null )
     {
       
       if( $className )
@@ -90,7 +79,7 @@ class LibVendorPhpexcelDocument
         $newSheet = new PHPExcel_Worksheet($this);
       }
       
-      $this->addSheet($newSheet, $iSheetIndex);
+      $this->_workSheetCollection[$iSheetIndex] = $newSheet;
       return $newSheet;
     }
     
@@ -100,12 +89,12 @@ class LibVendorPhpexcelDocument
 	 * @param int $pIndex Sheet index
 	 * @return PHPExcel_Worksheet
 	 * @throws Exception
-	 */
+	 
 	public function getSheet($pIndex = 0)
 	{
 		$numSheets = count($this->_workSheetCollection) - 1;
 
-		if ( $pIndex > $numSheets ) 
+		if ( (int)$pIndex > $numSheets ) 
 		{
 		  
 			throw new InternalError_Exception
@@ -115,9 +104,9 @@ class LibVendorPhpexcelDocument
 		} 
 		else 
 		{
-			return $this->_workSheetCollection[$pIndex];
+			return $this->_workSheetCollection[(int)$pIndex];
 		}
-	}
+	}*/
   
 
 }//end class LibVendorPhpexcelDocument
