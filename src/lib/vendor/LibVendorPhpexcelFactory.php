@@ -20,7 +20,7 @@
 if( !defined( 'VENDOR_PHPEXCEL_VERSION' ) )
 {
 
-  define( 'VENDOR_PHPEXCEL_VERSION' , 'actual' );
+  define( 'VENDOR_PHPEXCEL_VERSION' , 'stable' );
 
   // include the needed data
   include PATH_ROOT.'WebFrap_Lib_PHPExcel/vendor/phpexcel/'.VENDOR_PHPEXCEL_VERSION.'/Classes/PHPExcel.php';
