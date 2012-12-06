@@ -214,13 +214,13 @@ class PHPExcel
     public function createSheet($iSheetIndex = NULL, $className = null, $title = null )
     {
       
-      if( $className )
+      if( $className && Webfrap::classLoadable( $className ) )
       {
         $newSheet = new $className( $this, $title );
       }
       else 
       {
-        $newSheet = new PHPExcel_Worksheet($this);
+        $newSheet = new PHPExcel_Worksheet( $this );
       }
       
       $this->addSheet($newSheet, $iSheetIndex);
