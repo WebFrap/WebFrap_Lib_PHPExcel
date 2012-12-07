@@ -110,11 +110,11 @@ class PHPExcel
 		
 		if( $sheetClass )
 		{  
-		  $this->_workSheetCollection[0] = new $sheetClass( $this, $title );
+		  $this->_workSheetCollection[] = new $sheetClass( $this, $title );
 		}
 		else
 		{ 
-		  $this->_workSheetCollection[0] = new PHPExcel_Worksheet( $this, $title );
+		  $this->_workSheetCollection[] = new PHPExcel_Worksheet( $this );
 		}
 		  
 		$this->_activeSheetIndex = 0;
